@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://diamond_user:diamond_pass@localhost:5559/diamond_db?schema=public"
+}
+
+enum UserRole {
+  CLIENT
+  ADMIN
+}
+
+enum LogType {
+  INVEST
+  INTEREST
+  FINAL_PAYOUT
+}
+
+model Project {
+  id          BigInt  @id @default(autoincrement())
+  title       String  @unique @db.VarChar(255)
+  description String  @db.VarChar(10000)
+  poolSum     Decimal @map("pool_sum") @db.Decimal(38, 2)
+  isActive    Boolean @default(false) @map("is_active")
+  logs        Log[]   @relation("ProjectLog")
+
+  @@map("project")
+}
+
+model User {
+  id               BigInt          @id @default(autoincrement())
+  login            String          @unique @db.VarChar(255)
+  password         String          @db.VarChar(255)
+  balance          Decimal         @default(0) @db.Decimal(38, 2)
+  about            String          @default("") @db.VarChar(1000)
+  role             UserRole        @default(CLIENT)
+  inviterId        BigInt          @default(0) @map("inviter_id")
+  registrationTime DateTime        @default(now()) @map("registration_time")
+  logs             Log[]           @relation("UserLog")
+  interestLogs     InterestLog[]   @relation("UserInterestLog")
+  SecurityToken    SecurityToken[] @relation("UserToken")
+
+  @@map("users")
+}
+
+model Log {
+  id           BigInt        @id @default(autoincrement())
+  amount       Decimal       @db.Decimal(38, 2)
+  user         User?         @relation("UserLog", fields: [userId], references: [id])
+  userId       BigInt?       @map("user_id")
+  project      Project?      @relation("ProjectLog", fields: [projectId], references: [id])
+  projectId    BigInt?       @map("project_id")
+  type         LogType       @default(INVEST)
+  dateTime     DateTime      @default(now()) @map("date_time")
+  interestLogs InterestLog[] @relation("LogInterestLog")
+
+  @@map("log")
+}
+
+model InterestLog {
+  id       BigInt   @id @default(autoincrement())
+  amount   Decimal  @db.Decimal(38, 2)
+  user     User?    @relation("UserInterestLog", fields: [userId], references: [id])
+  userId   BigInt?  @map("user_id")
+  log      Log?     @relation("LogInterestLog", fields: [logId], references: [id])
+  logId    BigInt?  @map("log_id")
+  type     LogType  @default(INTEREST)
+  dateTime DateTime @default(now()) @map("date_time")
+
+  @@map("interest_log")
+}
+
+model SecurityToken {
+  id         BigInt   @id @default(autoincrement())
+  token      String   @db.VarChar(255)
+  createTime DateTime @default(now()) @map("create_time")
+  updateTime DateTime @default(now()) @map("update_time")
+  user       User?    @relation("UserToken", fields: [userId], references: [id])
+  userId     BigInt?  @map("user_id")
+
+  @@map("security_token")
+}

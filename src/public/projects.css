@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.average-mark {
+    position: relative;
+    cursor: pointer;
+}
+
+.average-mark:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 10;
+    opacity: 0.8;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.original-title {
+    font-size: 14px; /* Smaller font size for original title */
+    color: #666; /* Lighter color for better contrast */
+}
+
+.genres {
+    font-size: 12px; /* Smaller font size for genres */
+    color: #666; /* Lighter color for better contrast */
+    margin-top: 5px; /* Spacing above genres */
+}

@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "users" ADD COLUMN     "about" VARCHAR(1000) NOT NULL DEFAULT '',
+ADD COLUMN     "balance" DECIMAL(38,2) NOT NULL DEFAULT 0;

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project List</title>
+    <link rel="stylesheet" href="../public/projects.css">
+</head>
+<body>
+<h1>Project List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Pool Sum</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% projects.forEach(project => { %>
+<!--        <tr onclick="location.href='/diamond/projects/<%= project.id %>'" style="cursor: pointer;">-->
+        <tr>
+            <td><%= project.id %></td>
+            <td><%= project.title %></td>
+            <td><%= project.description %></td>
+            <td><%= project.poolSum.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+        </tr>
+    <% }) %>
+    </tbody>
+</table>
+</body>
+</html>

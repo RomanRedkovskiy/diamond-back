@@ -1,0 +1,13 @@
+# Node.js
+node_modules/
+dist/
+*.log
+
+# TypeScript
+*.tsbuildinfo
+
+# Environment variables
+prisma/.env
+
+# IDE settings
+.vscode/

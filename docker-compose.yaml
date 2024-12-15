@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:latest
+    container_name: my_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: diamond_user
+      POSTGRES_PASSWORD: diamond_pass
+      POSTGRES_DB: diamond_db
+    ports:
+      - "5559:5432"

@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h2 {
+    color: #4CAF50;
+    margin-top: 20px;
+}
+
+li {
+    list-style-type: none
+}
+
+.original-title {
+    font-size: 16px; /* Smaller font size for original title */
+    color: #666; /* Lighter color for better contrast */
+    text-align: center; /* Center the original title */
+}
+
+.main_info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    color: #333;
+}
+
+.genres_and_countries{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.genres, .countries {
+    display: flex;
+    flex-direction: column; /* Arrange items in a column */
+    margin-bottom: 20px; /* Spacing below rows */
+}
+
+.genre-item, .country-item {
+    font-size: 14px; /* Smaller font size for genres and countries */
+    color: #666; /* Lighter color for better contrast */
+    margin: 5px 0; /* Spacing between items */
+}
+
+.rating-form {
+    border: 1px solid #ddd; /* Border for the rating form */
+    padding: 15px; /* Padding inside the form */
+    border-radius: 4px; /* Rounded corners */
+    margin-top: 10px; /* Spacing above form */
+    width: 30%; /* Width of the form */
+    margin: 0 auto; /* Center the form */
+}
+
+form {
+    margin-top: 10px; /* Spacing above forms */
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+    width: 48%; /* Half width for buttons */
+    display: inline-block; /* Align buttons inline */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
